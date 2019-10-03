@@ -10,9 +10,8 @@ server.use(express.json());
 
 server.get('/', (req, res) => {
   res.send(
-    "<h1>Welcome to Matthew's Shouts<h1>",
-    "<p>use endpoint /api/shouts to put shoutouts"
-
+    "<h1>Welcome to Matthew's Shouts use endpoint api/shouts to post shouts<h1>"
+    
   )
 })
 
