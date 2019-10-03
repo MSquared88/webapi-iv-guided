@@ -8,6 +8,14 @@ const server = express();
 server.use(helmet());
 server.use(express.json());
 
+server.get('/', (req, res) => {
+  res.send(
+    "<h1>Welcome to Matthew's Shouts<h1>",
+    "<p>use endpoint /api/shouts to put shoutouts"
+
+  )
+})
+
 server.get('/api/shouts', (req, res) => {
   Shoutouts.find()
   .then(shoutouts => {
