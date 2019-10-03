@@ -8,10 +8,14 @@ const server = express();
 server.use(helmet());
 server.use(express.json());
 
-server.get('/', (req, res) => {
+server.get('/api/shouts', (req, res) => {
   Shoutouts.find()
   .then(shoutouts => {
-    res.status(200).json(shoutouts);
+    shoutouts.length
+    ?
+    res.status(200).json(shoutouts)
+    :
+    res.status(404).json({messge: "no shoutouts"})
   })
   .catch (error => {
     console.error('\nERROR', error);
@@ -19,7 +23,7 @@ server.get('/', (req, res) => {
   });
 });
 
-server.post('/', (req, res) => {
+server.post('/api/shouts', (req, res) => {
   Shoutouts.add(req.body)
   .then(shoutout => {
     res.status(201).json(shoutout);
